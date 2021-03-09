@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device.width">
+        <meta name="Author" content="Loren Mahia(lmahia01)">
+        <title>Amicable_by_Loren</title>
+        <link rel="stylesheet" href="./styling.css">
+        <script>
+            var arr1 = [];
+            var arr2 = [];
+            var num1; 
+            var num2;
+            function factorarray (calc, arr) {
+                //alert("factorarray called");
+                 var i;
+                 for(i = 1; i < calc ; i++) {
+                    if(calc % i == 0) {
+                       // alert(i + " is a factor of " + calc);
+                        arr.push(i);  
+                       // alert("already pushed");
+                    }
+                 }  
+                var j; 
+                var sum;
+                //alert("the first factors  in calculatesum are: " + arr1);
+                sum = arr.reduce(function(a,b) {
+                    return a + b;
+                });
+               // alert("Sum is : " + sum);
+                return sum;
+            }
+            
+            //Printing the amicable numbers 
+            function is_amicable() {
+               // alert("amicable called");
+                num1 = document.getElementById("fnum").value;
+                num2 = document.getElementById("snum").value;
+               // factorarray(num1, arr1);
+                //factorarray(num2, arr2);
+               // alert("the first factors are in amicable : " + arr1);
+                if(factorarray(num1, arr1) == num2 && factorarray(num2, arr2) == num1) {
+                    return true;
+                }
+                else {
+                  return false;
+                }
+            }
+            function print (){
+               // alert("Print Called");
+                if(is_amicable()) {
+                    document.getElementById("message").innerHTML = ("The numbers: " + num1 + " and " + num2 + " are Amicable");    
+                }
+                else {
+                    document.getElementById("message").innerHTML = ("The numbers: " + num1 + " and " + num2 + " are NOT Amicable");
+                  }
+            }
+        </script>
+    </head>
+    <body>
+        <section>
+            <h1> Welcome to the Amicable Number Tester </h1>
+        </section>
+        <img src="./numbers.jpeg" alt="Numbers" height="50%" width="80%">
+        <h1>Please fill in your Two Numbers below</h1>
+        <form>
+            <label for="fnum"> First Number</label>
+            <input type="text" id="fnum"><br> <br>
+            <label for="snum"> Second Number</label>
+            <input type="text" id="snum"><br>
+        </form>
+        <button onclick="print()">Submit</button>  
+        <br>
+        <p>Please click the submit button to check if the two numbers are amicable</p>
+        <div id = "message"></div>
+        <section class="footer">
+            <h3>Designed by Loren Mahia </h3>
+        </section>
+    </body>
+</html>
